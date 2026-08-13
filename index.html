@@ -1,0 +1,3000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixiWishh ✨ Cute & Sparkly Jewelry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #fcf8f2;
+            --pure-white: #ffffff;
+            --soft-pink: #ffb7c5;
+            --deep-pink: #ff8fa3;
+            --light-purple: #e2d1f9;
+            --text-dark: #4a3b4c;
+            --accent-gold: #ffd700;
+            --funky-glow: rgba(255, 143, 163, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Animations & Funky Keyframes --- */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3); }
+            50% { box-shadow: 0 6px 25px rgba(255, 143, 163, 0.6), 0 0 15px rgba(226, 209, 249, 0.8); }
+        }
+
+        @keyframes rainbowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(270deg, var(--soft-pink), var(--light-purple), #ffd1dc);
+            background-size: 200% 200%;
+            animation: rainbowGradient 6s ease infinite;
+            text-align: center;
+            padding: 9px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-dark);
+            border-bottom: 2px dashed var(--deep-pink);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--pure-white);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px dashed var(--soft-pink);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 20px rgba(255, 183, 197, 0.15);
+        }
+
+        .pixiwishh-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .pixiwishh-header h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.8rem;
+            color: var(--deep-pink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border-radius: 15px;
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--deep-pink);
+            background-color: rgba(255, 183, 197, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cart-link-btn {
+            background-color: var(--bg-cream);
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 2px solid var(--soft-pink);
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .cart-link-btn:hover {
+            background-color: var(--soft-pink);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 12px var(--funky-glow);
+        }
+
+        .cart-badge {
+            background-color: var(--deep-pink);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: popIn 0.3s ease;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--pure-white);
+            min-width: 180px;
+            box-shadow: 0 10px 30px rgba(74, 59, 76, 0.15);
+            z-index: 1001;
+            border-radius: 18px;
+            border: 2px dashed var(--soft-pink);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 0;
+            margin-top: 10px;
+            animation: floatSlow 4s ease-infinite;
+        }
+
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--bg-cream);
+            color: var(--deep-pink);
+            transform: translateX(4px);
+        }
+
+        /* Hero / Banner Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 183, 197, 0.35), rgba(226, 209, 249, 0.45));
+            padding: 90px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px dashed var(--soft-pink);
+            overflow: hidden;
+        }
+
+        /* Decorative Floating Elements in Hero */
+        .hero-decor {
+            position: absolute;
+            font-size: 2rem;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0.7;
+            animation: floatSlow 3s ease-in-out infinite alternate;
+        }
+
+        .decor-1 { top: 15%; left: 8%; animation-delay: 0s; }
+        .decor-2 { top: 20%; right: 10%; animation-delay: 1s; }
+        .decor-3 { bottom: 15%; left: 12%; animation-delay: 1.5s; }
+        .decor-4 { bottom: 20%; right: 8%; animation-delay: 0.5s; }
+
+        .hero h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, var(--deep-pink), #a259ff, var(--deep-pink));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: rainbowGradient 4s linear infinite;
+        }
+
+        .hero-tagline {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--deep-pink);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 620px;
+            margin: 0 auto 30px auto;
+            color: #6d586e;
+            line-height: 1.5;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--soft-pink), var(--light-purple));
+            color: var(--text-dark);
+            padding: 14px 34px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            cursor: pointer;
+            animation: pulseGlow 2.5s infinite;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-4px) scale(1.04);
+            animation: none;
+            box-shadow: 0 8px 25px rgba(255, 143, 163, 0.6);
+        }
+
+        /* Shared Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Fredoka', cursive;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--soft-pink), var(--light-purple));
+            border-radius: 10px;
+            margin: 6px auto 0 auto;
+        }
+
+        /* Grid Layouts */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--pure-white);
+            border-radius: 22px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(74, 59, 76, 0.06);
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            border-color: var(--soft-pink);
+            transform: translateY(-8px) rotate(0.5deg);
+            box-shadow: 0 12px 30px rgba(255, 143, 163, 0.25);
+        }
+
+        .badge-best-seller {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--deep-pink), #a259ff);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 12px;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(255, 143, 163, 0.5);
+            animation: wiggle 3s infinite ease-in-out;
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .card h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #7a687c;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .price {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.25rem;
+            color: var(--deep-pink);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Uniform Image Containers */
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: #faf5f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border: 2px dashed rgba(255, 183, 197, 0.5);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+
+        .card:hover .product-img {
+            transform: scale(1.06) rotate(-1deg);
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(45deg, var(--soft-pink), var(--light-purple));
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 20px;
+            font-size: 0.98rem;
+            font-weight: 700;
+            border-radius: 22px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 143, 163, 0.25);
+            margin-top: auto;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 6px 18px rgba(255, 143, 163, 0.5);
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.96);
+        }
+
+        .sub-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .tag {
+            background-color: var(--bg-cream);
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            border: 1px solid var(--soft-pink);
+        }
+
+        .tag-soon {
+            background-color: var(--light-purple);
+            color: var(--text-dark);
+        }
+
+        /* Coming Soon Cards */
+        .coming-soon-card {
+            background: linear-gradient(135deg, rgba(255, 183, 197, 0.2), rgba(226, 209, 249, 0.3));
+            border: 2px dashed var(--soft-pink);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .coming-soon-card h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.8rem;
+            color: var(--deep-pink);
+            margin-bottom: 10px;
+        }
+
+        .coming-soon-card p {
+            font-size: 1.05rem;
+            color: #7a687c;
+            font-weight: 500;
+        }
+
+        .coming-soon-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            animation: floatSlow 2.5s infinite ease-in-out;
+        }
+
+        /* Deals Section */
+        .deals-card-large {
+            background: linear-gradient(135deg, var(--light-purple), var(--soft-pink));
+            border-radius: 25px;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 10px 30px rgba(74, 59, 76, 0.1);
+            margin-bottom: 30px;
+            border: 3px solid var(--pure-white);
+            transition: transform 0.3s ease;
+        }
+
+        .deals-card-large:hover {
+            transform: translateY(-4px);
+        }
+
+        .deals-content {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .deals-content h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.1rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .deals-content p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .deal-price {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.4rem;
+            color: var(--deep-pink);
+            background: var(--pure-white);
+            padding: 8px 22px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .deals-image-container {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .deal-img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            border: 4px solid var(--pure-white);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .deal-img:hover {
+            transform: scale(1.04) rotate(1deg);
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 45px 40px;
+            background-color: var(--pure-white);
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(74, 59, 76, 0.06);
+            border: 3px dashed var(--soft-pink);
+        }
+
+        .about-section h2 {
+            font-family: 'Fredoka', cursive;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .about-section p {
+            font-size: 1.12rem;
+            color: #6d586e;
+            line-height: 1.6;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Social Section Styles */
+        .social-section {
+            text-align: center;
+            margin: 60px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .social-header-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .social-handle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .social-handle-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 39, 67, 0.45);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .insta-card {
+            position: relative;
+            background: var(--pure-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(74, 59, 76, 0.08);
+            border: 2px solid rgba(255, 183, 197, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insta-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--deep-pink);
+            box-shadow: 0 12px 30px rgba(255, 143, 163, 0.25);
+        }
+
+        .insta-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(255, 183, 197, 0.3), rgba(226, 209, 249, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .insta-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .insta-card:hover .insta-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .insta-icon-placeholder {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .insta-card:hover .insta-icon-placeholder {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Hover Overlay */
+        .insta-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(74, 59, 76, 0.65);
+            backdrop-filter: blur(3px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            font-weight: 700;
+        }
+
+        .insta-card:hover .insta-overlay {
+            opacity: 1;
+        }
+
+        .insta-overlay-stats {
+            display: flex;
+            gap: 18px;
+            font-size: 1.1rem;
+        }
+
+        .insta-view-btn {
+            background: var(--pure-white);
+            color: var(--text-dark);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .insta-view-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--soft-pink);
+        }
+
+        /* Card Bottom Info */
+        .insta-card-footer {
+            padding: 14px;
+            text-align: left;
+            background: var(--pure-white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed var(--soft-pink);
+        }
+
+        .insta-caption {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #6d586e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 160px;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #888;
+            font-weight: 700;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .like-btn.liked {
+            color: var(--deep-pink);
+        }
+
+        .like-btn:active {
+            transform: scale(1.3);
+        }
+
+        /* Floating Sparkle Animation */
+        .sparkle-particle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1.4rem;
+            animation: floatUp 0.8s ease-out forwards;
+            z-index: 10;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.4);
+            }
+        }
+
+        /* Cart Drawer */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 59, 76, 0.4);
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1002;
+        }
+
+        .cart-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: var(--pure-white);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 1003;
+            transform: translateX(105%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+        }
+
+        .cart-drawer.open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        /* Hamburger Menu Button (mobile only) */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-btn:hover {
+            background-color: var(--bg-cream);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 59, 76, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1002;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Slide-in Menu Drawer */
+        .menu-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(160deg, var(--soft-pink), var(--light-purple));
+            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+            z-index: 1003;
+            transform: translateX(-105%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .menu-drawer.open {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--pure-white);
+        }
+
+        .menu-header h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.4rem;
+            color: var(--pure-white);
+        }
+
+        .close-menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--pure-white);
+        }
+
+        .menu-links {
+            list-style: none;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-links a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 11px 12px;
+            border-radius: 12px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-links a:hover,
+        .menu-links a:active {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-sub-title {
+            font-family: 'Fredoka', cursive;
+            color: var(--pure-white);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            margin: 12px 0 2px 12px;
+        }
+
+        .menu-links .menu-sub a {
+            padding-left: 26px;
+            font-size: 0.95rem;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--soft-pink);
+        }
+
+        .cart-header h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: transform 0.2s ease;
+        }
+
+        .close-cart-btn:hover {
+            transform: scale(1.2) rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: #7a687c;
+            margin-top: 50px;
+            font-weight: 500;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-cream);
+            padding: 10px;
+            border-radius: 14px;
+            border: 1px solid var(--soft-pink);
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            font-size: 0.85rem;
+            color: var(--deep-pink);
+            font-weight: 700;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .qty-btn {
+            background: var(--pure-white);
+            border: 1px solid var(--soft-pink);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--soft-pink);
+        }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-left: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .remove-item-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-footer {
+            border-top: 2px dashed var(--soft-pink);
+            padding-top: 15px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+            font-family: 'Fredoka', cursive;
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(45deg, var(--soft-pink), var(--light-purple));
+            color: var(--text-dark);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 143, 163, 0.5);
+        }
+
+        /* Checkout Modal Styles */
+        .checkout-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            background-color: var(--pure-white);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 1004;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px dashed var(--soft-pink);
+        }
+
+        .checkout-modal.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .checkout-header {
+            padding: 20px;
+            border-bottom: 2px dashed var(--soft-pink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .checkout-header h3 {
+            font-family: 'Fredoka', cursive;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .checkout-body {
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .checkout-summary {
+            background: var(--bg-cream);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .checkout-summary h4, .checkout-body h4 {
+            font-family: 'Fredoka', cursive;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .checkout-item-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #6d586e;
+        }
+
+        .checkout-total-line {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px dashed var(--soft-pink);
+            padding-top: 10px;
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--deep-pink);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            padding: 10px 14px;
+            border: 2px solid var(--soft-pink);
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--deep-pink);
+        }
+
+        /* Product Options Modal */
+        .product-modal-preview {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: var(--bg-cream);
+            padding: 12px;
+            border-radius: 15px;
+        }
+
+        .product-modal-preview img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 10px;
+            background-color: var(--pure-white);
+            flex-shrink: 0;
+        }
+
+        .product-modal-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .option-section {
+            margin-top: 5px;
+        }
+
+        .option-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .option-chip {
+            background: var(--bg-cream);
+            border: 2px solid var(--soft-pink);
+            padding: 7px 14px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-chip.selected {
+            background: linear-gradient(45deg, var(--soft-pink), var(--light-purple));
+            border-color: var(--deep-pink);
+        }
+
+        .size-chart-img {
+            width: 100%;
+            max-width: 320px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 15px;
+            border: 2px dashed var(--soft-pink);
+            background: var(--pure-white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--pure-white);
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 3px dashed var(--light-purple);
+            margin-top: 60px;
+            font-size: 0.95rem;
+            color: #7a687c;
+        }
+
+        footer .brand-credit {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        footer .dev-credit {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--deep-pink);
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 15px;
+                flex-wrap: nowrap;
+                gap: 8px;
+            }
+
+            .menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .pixiwishh-header {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .pixiwishh-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .header-logo {
+                height: 38px;
+            }
+
+            .cart-link-btn {
+                flex-shrink: 0;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+
+            .container {
+                margin: 35px auto;
+                padding: 0 15px;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .card {
+                padding: 12px;
+                border-radius: 16px;
+            }
+
+            .card h3 {
+                font-size: 1.05rem;
+                margin-bottom: 5px;
+            }
+
+            .card p {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+
+            .price {
+                font-size: 1.05rem;
+                margin-bottom: 10px;
+            }
+
+            .add-to-cart-btn {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+
+            .badge-best-seller {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+                top: 8px;
+                right: 8px;
+            }
+
+            .deals-card-large {
+                padding: 25px 15px;
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .deals-content {
+                min-width: 100%;
+            }
+
+            .deals-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .sub-categories {
+                justify-content: center !important;
+            }
+
+            .about-section {
+                padding: 25px 20px;
+                margin: 40px 15px;
+            }
+
+            .about-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cart-drawer {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .checkout-modal {
+                width: 95%;
+                max-height: 85vh;
+            }
+
+            .form-group input, .form-group textarea, .form-group select {
+                font-size: 16px; 
+            }
+
+            .qty-btn {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (hover: none) {
+            .insta-overlay {
+                opacity: 1;
+                backdrop-filter: none;
+                background: linear-gradient(to top, rgba(74, 59, 76, 0.75) 0%, rgba(74, 59, 76, 0.25) 45%, transparent 70%);
+                justify-content: flex-end;
+                padding-bottom: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ✨ Free delivery on orders over 1500 PKR ✨
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <button class="menu-btn" id="open-menu-btn" aria-label="Open menu">☰</button>
+        <div class="pixiwishh-header">
+            <img src="logo.jpeg" alt="PixiWishh Logo" class="header-logo">
+            <h1>PixiWishh 💫</h1>
+        </div>
+        
+        <button class="cart-link-btn" id="open-cart-btn">
+            🛍️ Cart <span class="cart-badge" id="cart-count">0</span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#best-sellers">Best Sellers ⭐</a></li>
+            <li class="dropdown">
+                <a href="#shop">Categories ▾</a>
+                <div class="dropdown-content">
+                    <a href="#necklaces">Necklaces</a>
+                    <a href="#bracelets">Bracelets</a>
+                    <a href="#earrings">Earrings</a>
+                    <a href="#phone-charms">Phone Charms</a>
+                    <a href="#rings">Rings</a>
+                </div>
+            </li>
+            <li><a href="#deals">Deals</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#social">Instagram</a></li>
+        </ul>
+    </header>
+
+    <!-- Slide-out Mobile Menu -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <nav class="menu-drawer" id="menu-drawer" aria-label="Mobile menu">
+        <div class="menu-header">
+            <h3>Menu 🌸</h3>
+            <button class="close-menu-btn" id="close-menu-btn" aria-label="Close menu">✖</button>
+        </div>
+        <ul class="menu-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#best-sellers">Best Sellers ⭐</a></li>
+            <li class="menu-sub-title">Categories 🪄</li>
+            <li class="menu-sub"><a href="#necklaces">Necklaces</a></li>
+            <li class="menu-sub"><a href="#bracelets">Bracelets</a></li>
+            <li class="menu-sub"><a href="#earrings">Earrings</a></li>
+            <li class="menu-sub"><a href="#phone-charms">Phone Charms</a></li>
+            <li class="menu-sub"><a href="#rings">Rings</a></li>
+            <li><a href="#deals">Deals 🏷️</a></li>
+            <li><a href="#about">About 💫</a></li>
+            <li><a href="#social">Instagram 📸</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slide-out Shopping Cart -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Bag 🛍️</h3>
+            <button class="close-cart-btn" id="close-cart-btn">✖</button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <p class="empty-cart-msg">Your shopping bag is empty! 🌸</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">0 PKR</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout ✨</button>
+        </div>
+    </div>
+
+    <!-- Banner Section / Hero -->
+    <section class="hero" id="hero">
+        <span class="hero-decor decor-1">✨</span>
+        <span class="hero-decor decor-2">💖</span>
+        <span class="hero-decor decor-3">⭐</span>
+        <span class="hero-decor decor-4">🎀</span>
+        <h1>Make a Wish, Wear the <span>Magic</span> ✨</h1>
+        <div class="hero-tagline">pixiwishh by ESHAAL</div>
+        <p>Discover cute, trendy, and funky handmade jewelry, phone charms, and accessories crafted to add sparkle to your everyday look.</p>
+        <a href="#best-sellers" class="cta-btn">Shop Best Sellers ⭐</a>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="container" id="best-sellers">
+        <h2 class="section-title">Best Sellers ⭐</h2>
+        <div class="grid-4">
+            
+            <!-- Best Seller 1 -->
+            <div class="card">
+                <span class="badge-best-seller">Best Seller 🔥</span>
+                <div>
+                    <div class="img-wrapper">
+                        <img src="best sellers 1.PNG" alt="Strawberry Dreams Phone Charm" class="product-img">
+                    </div>
+                    <h3>Strawberry Dreams Phone Charm</h3>
+                    <span class="price">400 PKR</span>
+                    <p>Fruit basket inspired phone charm with star beads, cherry red accents, and a juicy strawberry pendant.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Strawberry Dreams Phone Charm" data-price="400" data-img="best sellers 1.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Best Seller 2 -->
+            <div class="card">
+                <span class="badge-best-seller">Best Seller 🔥</span>
+                <div>
+                    <div class="img-wrapper">
+                        <img src="best sellers 2.PNG" alt="Sanrio Charm Bracelets (Kuromi & Melody)" class="product-img">
+                    </div>
+                    <h3>Sanrio Charm Bracelets</h3>
+                    <span class="price">550 PKR each</span>
+                    <p>Choose your vibe! Dark & Dreamy Kuromi or Pretty in Pink My Melody charm bracelets with bows and stars.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sanrio Charm Bracelet" data-price="550" data-img="best sellers 2.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Best Seller 3 -->
+            <div class="card">
+                <span class="badge-best-seller">Best Seller 🔥</span>
+                <div>
+                    <div class="img-wrapper">
+                        <img src="best sellers 3.PNG" alt="Cute Charm Dangle Earrings Collection" class="product-img">
+                    </div>
+                    <h3>Cute Charm Dangle Earrings</h3>
+                    <span class="price">300 PKR each</span>
+                    <p>Handmade dangle earrings featuring metal hearts, pink stars, bow pearls, and charming gingham backings.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Cute Charm Dangle Earrings" data-price="300" data-img="best sellers 3.PNG">Add to Cart 🛍️</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Shop by Category Section -->
+    <section class="container" id="shop">
+        <h2 class="section-title">Shop by Category 🪄</h2>
+        
+        <div class="grid-4">
+            <a href="#necklaces" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon">📿</div>
+                    <h3>Necklaces</h3>
+                    <p>Dainty pendants, glass pearls, and star-studded chains to complete your aesthetic.</p>
+                    <div class="sub-categories">
+                        <span class="tag">Pendants</span>
+                        <span class="tag">Pearls</span>
+                        <span class="tag">Chains</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#bracelets" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3>Bracelets</h3>
+                    <p>Stackable, shimmering wrist candy made for every mood.</p>
+                    <div class="sub-categories">
+                        <span class="tag">Charm</span>
+                        <span class="tag">Beaded</span>
+                        <span class="tag">Custom</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#earrings" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3>Earrings</h3>
+                    <p>Handmade dangle earrings, bows, and sparkly stars to frame your face.</p>
+                    <div class="sub-categories">
+                        <span class="tag">Dangle</span>
+                        <span class="tag">Pearls</span>
+                        <span class="tag">Stars</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#phone-charms" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Phone Charms</h3>
+                    <p>Funky, bead-heavy straps for ultimate aesthetic vibes.</p>
+                    <div class="sub-categories">
+                        <span class="tag">Y2K Beads</span>
+                        <span class="tag">Stars</span>
+                        <span class="tag">Custom</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#rings" style="text-decoration: none; color: inherit;">
+                <div class="card">
+                    <div class="card-icon">💍</div>
+                    <h3>Rings</h3>
+                    <p>Sparkly stackable rings to complete your hand stack.</p>
+                    <div class="sub-categories">
+                        <span class="tag tag-soon">Coming Soon ✨</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Necklaces Collection Section -->
+    <section class="container" id="necklaces">
+        <h2 class="section-title">Necklaces Collection 📿</h2>
+        <div class="grid-4">
+            
+            <!-- Necklace 1 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="necklace new 1.jpeg" alt="Coquette Ribbon Bow Pendant Necklace" class="product-img">
+                    </div>
+                    <h3>Coquette Ribbon Bow Pendant Necklace</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Dainty glass pearl strand featuring a delicate ribbon bow pendant for everyday fairycore vibes.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Coquette Ribbon Bow Pendant Necklace" data-price="300" data-img="necklace 1.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Necklace 2 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="necklace new 2.jpeg" alt="Celestial Star Layered Pearl Necklace" class="product-img">
+                    </div>
+                    <h3>Celestial Star Layered Pearl Necklace</h3>
+                    <span class="price">500 PKR</span>
+                    <p>Handcrafted statement necklace with lustrous pearls, metallic star charms, and crystal accents.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Celestial Star Layered Pearl Necklace" data-price="500" data-img="necklace 2.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Necklace 3 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="necklace new 3.jpeg" alt="Sweet Pastel Heart Charm Necklace" class="product-img">
+                    </div>
+                    <h3>Sweet Pastel Heart Charm Necklace</h3>
+                    <span class="price">350 PKR</span>
+                    <p>Aesthetic pastel beaded necklace topped off with a sweet open-heart charm drop pendant.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sweet Pastel Heart Charm Necklace" data-price="350" data-img="necklace 3.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bracelets Collection Section -->
+    <section class="container" id="bracelets">
+        <h2 class="section-title">Bracelets Collection 💎</h2>
+        <div class="grid-4">
+            
+            <!-- Existing Bracelet 1 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="beaded bracelet.PNG" alt="The Powerpuff Girls Bracelet" class="product-img">
+                    </div>
+                    <h3>The Powerpuff Girls Bracelet</h3>
+                    <span class="price">350 PKR</span>
+                    <p>Cute Blossom, Bubbles, and Buttercup themed beaded wristwear.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="The Powerpuff Girls Bracelet" data-price="350" data-img="beaded bracelet.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Existing Bracelet 2 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="charms bracelet.PNG" alt="Cherry Pearl Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Cherry Pearl Charm Bracelet</h3>
+                    <span class="price">600 PKR</span>
+                    <p>Sweetest mix of glass pearls, star charms, and cute cherry accents.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Cherry Pearl Charm Bracelet" data-price="600" data-img="charms bracelet.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- Existing Bracelet 3 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="custom bracelet.PNG" alt="Custom Name Bracelet" class="product-img">
+                    </div>
+                    <h3>Custom Name Bracelet</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Personalized black beaded bracelet customized with your favorite name or word.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Custom Name Bracelet" data-price="300" data-img="custom bracelet.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 1 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 1.jpeg" alt="Starry Spike Pearl Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Starry Spike Pearl Charm Bracelet</h3>
+                    <span class="price">500 PKR</span>
+                    <p>Made with all the stars, lustrous pearls, and cute spikes for a gritty yet sweet daily drip.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Starry Spike Pearl Charm Bracelet" data-price="500" data-img="bracelet new 1.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 2 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 2.jpeg" alt="Sanrio Dream Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Sanrio Dream Charm Bracelet</h3>
+                    <span class="price">650 PKR each</span>
+                    <p>Crafted with chaos & love! Choose between Dark & Dreamy Kuromi or Pretty in Pink My Melody.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sanrio Dream Charm Bracelet" data-price="650" data-img="bracelet new 2.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 3 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 3.jpeg" alt="Aesthetic Multi-Style Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Aesthetic Multi-Style Charm Bracelet</h3>
+                    <span class="price">450 PKR each</span>
+                    <p>Choose your aesthetic! Pink Vibe Check with butterfly kisser, Edgy Punk-ish Phase, or Oceanic Dream.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Aesthetic Multi-Style Charm Bracelet" data-price="450" data-img="bracelet new 3.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 4 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 4.jpeg" alt="Tom & Jerry Besties Bracelet Set" class="product-img">
+                    </div>
+                    <h3>Tom & Jerry Besties Bracelet Set</h3>
+                    <span class="price">700 PKR</span>
+                    <p>Super cute black and white beaded matching pair set featuring iconic Tom & Jerry charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Tom & Jerry Besties Bracelet Set" data-price="700" data-img="bracelet new 4.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 5 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 5.jpeg" alt="Sunshine Opal Sun Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Sunshine Opal Sun Charm Bracelet</h3>
+                    <span class="price">400 PKR each</span>
+                    <p>Bright neon lime and soft pink glass beads paired with a shimmering opal sun charm.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sunshine Opal Sun Charm Bracelet" data-price="400" data-img="bracelet new 5.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 6 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 6.jpeg" alt="Cute Charm Link Bracelet" class="product-img">
+                    </div>
+                    <h3>Cute Charm Link Bracelet</h3>
+                    <span class="price">400 PKR each</span>
+                    <p>Dainty bead and chain mix available with filigree hearts, pastel star, or bow ribbon charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Cute Charm Link Bracelet" data-price="400" data-img="bracelet new 6.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 7 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 7.jpeg" alt="Stargirl & Starboy Couple Bracelet" class="product-img">
+                    </div>
+                    <h3>Stargirl & Starboy Couple Bracelet</h3>
+                    <span class="price">600 PKR (Pair) / 350 PKR each</span>
+                    <p>Matching red & black beaded letter bracelets. Buy single or get the full couple pair set!</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Stargirl & Starboy Couple Bracelet" data-price="350" data-img="bracelet new 7.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 8 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 8.jpeg" alt="Sparkle Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Sparkle Charm Bracelet</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Aesthetic handmade beaded bracelet with delicate sparkle details for everyday wear.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sparkle Charm Bracelet" data-price="300" data-img="bracelet new 8.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 9 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 9.jpeg" alt="Pastel Beaded Daisy Bracelet" class="product-img">
+                    </div>
+                    <h3>Pastel Beaded Daisy Bracelet</h3>
+                    <span class="price">250 PKR</span>
+                    <p>Sweet and delicate pastel beaded bracelet, perfect for stacking with your favorite accessories.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Pastel Beaded Daisy Bracelet" data-price="250" data-img="bracelet new 9.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 10 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 10.jpeg" alt="Peach Pearl Glass Bead Bracelet" class="product-img">
+                    </div>
+                    <h3>Peach Pearl Glass Bead Bracelet</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Sweet blend of translucent peach quartz beads paired with shimmering glass pearls.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Peach Pearl Glass Bead Bracelet" data-price="300" data-img="bracelet new 10.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 11 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 11.jpeg" alt="Stranger Things Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Stranger Things Charm Bracelet</h3>
+                    <span class="price">450 PKR</span>
+                    <p>Inspired by Hawkins! Red, black, and white beads styled with silver star, planet, envelope, and music charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Stranger Things Charm Bracelet" data-price="450" data-img="bracelet new 11.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 12 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 12.jpeg" alt="Neon Pop Beaded Bracelet" class="product-img">
+                    </div>
+                    <h3>Neon Pop Beaded Bracelet</h3>
+                    <span class="price">300 PKR each</span>
+                    <p>Vibrant duo-tone glowing bead stack. Choose between Magenta/Purple or Turquoise/Mint!</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Neon Pop Beaded Bracelet" data-price="300" data-img="bracelet new 12.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 13 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 13.jpeg" alt="Vintage Coquette Pearl & Bow Bracelet" class="product-img">
+                    </div>
+                    <h3>Vintage Coquette Pearl & Bow Bracelet</h3>
+                    <span class="price">450 PKR</span>
+                    <p>Dark coquette vibe with black beads, pearl heart accents, red gems, and cute silver dangle charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Vintage Coquette Pearl & Bow Bracelet" data-price="450" data-img="bracelet new 13.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 14 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 14.jpeg" alt="Dainty Black Pearl Charm Bracelet" class="product-img">
+                    </div>
+                    <h3>Dainty Black Pearl Charm Bracelet</h3>
+                    <span class="price">250 PKR</span>
+                    <p>Minimalist & chic dark bead strand finished with delicate pearl star accents.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Dainty Black Pearl Charm Bracelet" data-price="250" data-img="bracelet new 14.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 15 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 15.jpeg" alt="Ocean Blue Star Glass Bracelet" class="product-img">
+                    </div>
+                    <h3>Ocean Blue Star Glass Bracelet</h3>
+                    <span class="price">350 PKR</span>
+                    <p>Translucent ocean-blue beads and pearls topped off with star and heart metal charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Ocean Blue Star Glass Bracelet" data-price="350" data-img="bracelet new 15.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 16 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 16.jpeg" alt="Y2K Aesthetic Charm Bracelet Stack" class="product-img">
+                    </div>
+                    <h3>Y2K Aesthetic Charm Bracelet Stack</h3>
+                    <span class="price">300 PKR each / 800 PKR Set</span>
+                    <p>Playful multi-style stack with hearts, butterflies, and pearls. Buy individually or as a complete 3-set!</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Y2K Aesthetic Charm Bracelet Stack" data-price="300" data-img="bracelet new 16.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 17 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 17.jpeg" alt="Yin & Yang Matching Besties Set" class="product-img">
+                    </div>
+                    <h3>Yin & Yang Matching Besties Set</h3>
+                    <span class="price">300 PKR each / 500 PKR Set</span>
+                    <p>Contrast black & white charm bracelets made for besties or couples. Available single or as a 2-piece set!</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Yin & Yang Matching Besties Set" data-price="300" data-img="bracelet new 17.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Item 18 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="bracelet new 18.jpeg" alt="Enchanted Fairycore Bracelet Stack Set" class="product-img">
+                    </div>
+                    <h3>Enchanted Fairycore Bracelet Stack Set</h3>
+                    <span class="price">800 PKR (Full Set)</span>
+                    <p>Premium layered 3-piece stack featuring pearls, glass beads, butterfly wings, and celestial star charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Enchanted Fairycore Bracelet Stack Set" data-price="800" data-img="bracelet new 18.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Phone Charms Collection Section -->
+    <section class="container" id="phone-charms">
+        <h2 class="section-title">Phone Charms Collection 📱</h2>
+        <div class="grid-4">
+            
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm.PNG" alt="Strawberry Dreams Phone Strap" class="product-img">
+                    </div>
+                    <h3>Strawberry Dreams Phone Strap</h3>
+                    <span class="price">400 PKR</span>
+                    <p>Chunky beads, star details, and cute strawberry charms for your phone.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Strawberry Dreams Phone Strap" data-price="400" data-img="phone charm.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm 2.PNG" alt="The Stardust Phone Charm Set" class="product-img">
+                    </div>
+                    <h3>The Stardust Set</h3>
+                    <span class="price">450 PKR</span>
+                    <p>Grunge fairy aesthetic with dark beads, metallic star charms, and delicate chain details.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="The Stardust Set" data-price="450" data-img="phone charm 2.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm 3.PNG" alt="Coquette & Galaxy Beaded Charm Collection" class="product-img">
+                    </div>
+                    <h3>Coquette & Galaxy Charm Collection</h3>
+                    <span class="price">450 PKR</span>
+                    <p>Dainty ribbon bows, key-to-the-galaxy charms, hearts, and pastel beaded aesthetic straps.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Coquette & Galaxy Charm Collection" data-price="450" data-img="phone charm 3.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Phone Charm Item 1 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm new 1.jpeg" alt="Coquette Pearl & Bow Phone Strap" class="product-img">
+                    </div>
+                    <h3>Coquette Pearl & Bow Phone Strap</h3>
+                    <span class="price">350 PKR</span>
+                    <p>Dainty glass pearls, sweet ribbon bows, and pastel beaded charm for ultimate coquette vibes.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Coquette Pearl & Bow Phone Strap" data-price="350" data-img="phone charm new 1.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Phone Charm Item 2 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm new 2.jpeg" alt="Silver Celestial Star Phone Strap" class="product-img">
+                    </div>
+                    <h3>Silver Celestial Star Phone Strap</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Metallic chrome star charms, translucent glass beads, and silver accents for a celestial aesthetic.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Silver Celestial Star Phone Strap" data-price="300" data-img="phone charm new 2.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Phone Charm Item 3 (Custom Name) -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="phone charm new 3.jpeg" alt="Custom Name Phone Charm" class="product-img">
+                    </div>
+                    <h3>Custom Name Phone Charm</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Personalized beaded phone charm strap customized with your favorite name or word with heart accents.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Custom Name Phone Charm" data-price="300" data-img="phone charm new 3.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Earrings Collection Section -->
+    <section class="container" id="earrings">
+        <h2 class="section-title">Earrings Collection ✨</h2>
+        <div class="grid-4">
+            
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earrings.PNG" alt="Celestial Pearl Star Earrings" class="product-img">
+                    </div>
+                    <h3>Celestial Pearl Star Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Dreamy double glass pearls styled with celestial dark star charm pendants.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Celestial Pearl Star Earrings" data-price="300" data-img="earrings.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings 1.PNG" alt="Sweet Heart Dangle Earrings" class="product-img">
+                    </div>
+                    <h3>Sweet Heart Dangle Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Minimalist open-heart drop earrings mounted on cute pink gingham carding.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Sweet Heart Dangle Earrings" data-price="300" data-img="earings 1.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings 2.PNG" alt="Ruby Star Dangle Earrings" class="product-img">
+                    </div>
+                    <h3>Ruby Star Dangle Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Chic black and cherry red beaded drop earrings with metallic star charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Ruby Star Dangle Earrings" data-price="300" data-img="earings 2.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings 3.PNG" alt="Coquette Pearl Bow Earrings" class="product-img">
+                    </div>
+                    <h3>Coquette Pearl Bow Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Elegant white pearl ribbon bows complete with floating pearl heart drops.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Coquette Pearl Bow Earrings" data-price="300" data-img="earings 3.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings 4.PNG" alt="Pastel Pink Star Earrings" class="product-img">
+                    </div>
+                    <h3>Pastel Pink Star Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Translucent clear beads paired with cute pastel pink star pendants.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Pastel Pink Star Earrings" data-price="300" data-img="earings 4.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings 5.PNG" alt="Dreamy Purple Star Earrings" class="product-img">
+                    </div>
+                    <h3>Dreamy Purple Star Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Faceted magenta crystal beads paired with soft lilac star charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Dreamy Purple Star Earrings" data-price="300" data-img="earings 5.PNG">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Earring Item 1 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings new 1.jpeg" alt="Melody Music Note Earrings" class="product-img">
+                    </div>
+                    <h3>Melody Music Note Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Chic black beaded drop earrings featuring silver music note charms for a rhythmic vibe.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Melody Music Note Earrings" data-price="300" data-img="earings new 1.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Earring Item 2 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings new 2.jpeg" alt="Dainty Ribbon Bow Earrings" class="product-img">
+                    </div>
+                    <h3>Dainty Ribbon Bow Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Sweet pearl and translucent glass beaded drop earrings with delicate silver ribbon bow charms.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Dainty Ribbon Bow Earrings" data-price="300" data-img="earings new 2.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+            <!-- New Earring Item 3 -->
+            <div class="card">
+                <div>
+                    <div class="img-wrapper">
+                        <img src="earings new 3.jpeg" alt="Edgy Spike Dangle Earrings" class="product-img">
+                    </div>
+                    <h3>Edgy Spike Dangle Earrings</h3>
+                    <span class="price">300 PKR</span>
+                    <p>Cool black beaded dangle earrings featuring edgy silver spike charms for a grunge-coquette look.</p>
+                </div>
+                <button class="add-to-cart-btn" data-name="Edgy Spike Dangle Earrings" data-price="300" data-img="earings new 3.jpeg">Add to Cart 🛍️</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rings Collection Section -->
+    <section class="container" id="rings">
+        <h2 class="section-title">Rings Collection 💍</h2>
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">✨ 💍 ✨</div>
+            <h3>New Collection Coming Soon!</h3>
+            <p>Sparkly, stackable ring designs are on their way. Check back soon!</p>
+        </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section class="container" id="deals">
+        <h2 class="section-title">Special Deals & Discounts 🏷️</h2>
+
+        <!-- Original Deal -->
+        <div class="deals-card-large">
+            <div class="deals-content">
+                <h3>Necklace & Earring Bundle Set</h3>
+                <div class="deal-price">Only 600 PKR ✨</div>
+                <p>Grab our gorgeous matching necklace and earring set at a special limited-time promotional price! Perfect for gifting or treating yourself.</p>
+                <div class="sub-categories" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <span class="tag" style="background: white;">Bundle & Save</span>
+                    <span class="tag" style="background: white;">Limited Time</span>
+                </div>
+                <button class="add-to-cart-btn deal-cart-btn" data-name="Necklace & Earring Bundle Set" data-price="600" data-img="deal.png.PNG">Add Bundle to Cart 🛍️</button>
+            </div>
+            <div class="deals-image-container">
+                <img src="deal.png.PNG" alt="Special Deal Necklace and Earring Set" class="deal-img">
+            </div>
+        </div>
+
+        <!-- New Deal 1 -->
+        <div class="deals-card-large">
+            <div class="deals-content">
+                <h3>Ocean Blue Hello Kitty Set</h3>
+                <div class="deal-price">Set of 3: 1100 PKR | From 150 PKR ✨</div>
+                <p>Sky blue & glass pearl aesthetic set featuring a cute phone charm, beaded pin, and charm bracelet. Buy the full trio or single pieces!</p>
+                <div class="sub-categories" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <span class="tag" style="background: white;">Set of 3: 1100 PKR</span>
+                    <span class="tag" style="background: white;">Bracelet: 650 PKR</span>
+                    <span class="tag" style="background: white;">Phone Charm: 300 PKR</span>
+                    <span class="tag" style="background: white;">Pin: 150 PKR</span>
+                </div>
+                <button class="add-to-cart-btn deal-cart-btn" data-name="Ocean Blue Hello Kitty Set" data-price="1100" data-img="deal new 1.jpeg">Select Item / Set 🛍️</button>
+            </div>
+            <div class="deals-image-container">
+                <img src="deal new 1.jpeg" alt="Ocean Blue Hello Kitty Set" class="deal-img">
+            </div>
+        </div>
+
+        <!-- New Deal 2 -->
+        <div class="deals-card-large">
+            <div class="deals-content">
+                <h3>My Melody Sweet Pink Set</h3>
+                <div class="deal-price">Set of 3: 1100 PKR | From 150 PKR ✨</div>
+                <p>Pretty in pink My Melody collection featuring a star charm bracelet, phone charm strap, and cute safety pin accessory.</p>
+                <div class="sub-categories" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <span class="tag" style="background: white;">Set of 3: 1100 PKR</span>
+                    <span class="tag" style="background: white;">Bracelet: 650 PKR</span>
+                    <span class="tag" style="background: white;">Phone Charm: 300 PKR</span>
+                    <span class="tag" style="background: white;">Pin: 150 PKR</span>
+                </div>
+                <button class="add-to-cart-btn deal-cart-btn" data-name="My Melody Sweet Pink Set" data-price="1100" data-img="deal new 2.jpeg">Select Item / Set 🛍️</button>
+            </div>
+            <div class="deals-image-container">
+                <img src="deal new 2.jpeg" alt="My Melody Sweet Pink Set" class="deal-img">
+            </div>
+        </div>
+
+        <!-- New Deal 3 -->
+        <div class="deals-card-large">
+            <div class="deals-content">
+                <h3>Vintage Coquette Pearl Trio Set</h3>
+                <div class="deal-price">Set of 3: 1100 PKR | From 150 PKR ✨</div>
+                <p>Coquette aesthetic pearl ensemble featuring a matching charm bracelet, phone charm, and dangle safety pin.</p>
+                <div class="sub-categories" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <span class="tag" style="background: white;">Set of 3: 1100 PKR</span>
+                    <span class="tag" style="background: white;">Bracelet: 650 PKR</span>
+                    <span class="tag" style="background: white;">Phone Charm: 300 PKR</span>
+                    <span class="tag" style="background: white;">Pin: 150 PKR</span>
+                </div>
+                <button class="add-to-cart-btn deal-cart-btn" data-name="Vintage Coquette Pearl Trio Set" data-price="1100" data-img="deal new 3.jpeg">Select Item / Set 🛍️</button>
+            </div>
+            <div class="deals-image-container">
+                <img src="deal new 3.jpeg" alt="Vintage Coquette Pearl Trio Set" class="deal-img">
+            </div>
+        </div>
+
+        <!-- New Deal 4 -->
+        <div class="deals-card-large">
+            <div class="deals-content">
+                <h3>Coquette Phone Charm & Pin Duo</h3>
+                <div class="deal-price">From 150 PKR ✨</div>
+                <p>Sparkly aesthetic duo featuring a phone charm strap and matching safety pin charm.</p>
+                <div class="sub-categories" style="justify-content: flex-start; margin-bottom: 20px;">
+                    <span class="tag" style="background: white;">Phone Charm: 300 PKR</span>
+                    <span class="tag" style="background: white;">Pin: 150 PKR</span>
+                </div>
+                <button class="add-to-cart-btn deal-cart-btn" data-name="Coquette Phone Charm & Pin Duo" data-price="300" data-img="deal new 4.jpeg">Select Item 🛍️</button>
+            </div>
+            <div class="deals-image-container">
+                <img src="deal new 4.jpeg" alt="Coquette Phone Charm & Pin Duo" class="deal-img">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- About PixiWish Section -->
+    <section class="about-section" id="about">
+        <h2>About PixiWishh 💫</h2>
+        <p>PixiWishh by eshaalfatima is your go-to destination for all things cute, sparkly, and handmade. Every piece of jewelry and accessory is crafted with love and magic to help you express your unique style every single day!</p>
+    </section>
+
+    <!-- Interactive Instagram / Social Media Section -->
+    <section class="social-section" id="social">
+        <h2 class="section-title">Follow Our Sparkle 📸</h2>
+        
+        <div class="social-header-wrapper">
+            <a href="https://instagram.com/pixiwishh" target="_blank" class="social-handle-btn">
+                <span>📸 Follow @pixiwishh</span>
+            </a>
+        </div>
+
+        <div class="instagram-grid">
+            <!-- Insta Post 1 -->
+            <div class="insta-card" onclick="triggerSparkle(event, this)">
+                <div class="insta-img-wrapper">
+                    <img src="best sellers 2.PNG" alt="Sanrio Bracelets Post" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="insta-icon-placeholder" style="display:none;">💖</div>
+                    <div class="insta-overlay">
+                        <div class="insta-overlay-stats">
+                            <span>❤️ <span class="stats-count">248</span></span>
+                            <span>💬 18</span>
+                        </div>
+                        <a href="https://instagram.com/pixiwishh" target="_blank" rel="noopener noreferrer" class="insta-view-btn" onclick="event.stopPropagation()">View on Insta 📸</a>
+                    </div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-caption">Sanrio Kuromi & Melody drop! 🎀</span>
+                    <button class="like-btn" onclick="toggleLike(event, this)">
+                        <span class="heart-icon">🤍</span> <span class="like-count">248</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Insta Post 2 -->
+            <div class="insta-card" onclick="triggerSparkle(event, this)">
+                <div class="insta-img-wrapper">
+                    <img src="phone charm.PNG" alt="Strawberry Phone Strap Post" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="insta-icon-placeholder" style="display:none;">✨</div>
+                    <div class="insta-overlay">
+                        <div class="insta-overlay-stats">
+                            <span>❤️ <span class="stats-count">192</span></span>
+                            <span>💬 12</span>
+                        </div>
+                        <a href="https://instagram.com/pixiwishh" target="_blank" rel="noopener noreferrer" class="insta-view-btn" onclick="event.stopPropagation()">View on Insta 📸</a>
+                    </div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-caption">Strawberry aesthetic straps 🍓</span>
+                    <button class="like-btn" onclick="toggleLike(event, this)">
+                        <span class="heart-icon">🤍</span> <span class="like-count">192</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Insta Post 3 -->
+            <div class="insta-card" onclick="triggerSparkle(event, this)">
+                <div class="insta-img-wrapper">
+                    <img src="best sellers 3.PNG" alt="Cute Earrings Post" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="insta-icon-placeholder" style="display:none;">🎀</div>
+                    <div class="insta-overlay">
+                        <div class="insta-overlay-stats">
+                            <span>❤️ <span class="stats-count">310</span></span>
+                            <span>💬 25</span>
+                        </div>
+                        <a href="https://instagram.com/pixiwishh" target="_blank" rel="noopener noreferrer" class="insta-view-btn" onclick="event.stopPropagation()">View on Insta 📸</a>
+                    </div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-caption">Coquette bow earrings ✨</span>
+                    <button class="like-btn" onclick="toggleLike(event, this)">
+                        <span class="heart-icon">🤍</span> <span class="like-count">310</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Insta Post 4 -->
+            <div class="insta-card" onclick="triggerSparkle(event, this)">
+                <div class="insta-img-wrapper">
+                    <img src="custom bracelet.PNG" alt="Custom Bracelet Post" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="insta-icon-placeholder" style="display:none;">💫</div>
+                    <div class="insta-overlay">
+                        <div class="insta-overlay-stats">
+                            <span>❤️ <span class="stats-count">175</span></span>
+                            <span>💬 9</span>
+                        </div>
+                        <a href="https://instagram.com/pixiwishh" target="_blank" rel="noopener noreferrer" class="insta-view-btn" onclick="event.stopPropagation()">View on Insta 📸</a>
+                    </div>
+                </div>
+                <div class="insta-card-footer">
+                    <span class="insta-caption">Custom beaded magic 💫</span>
+                    <button class="like-btn" onclick="toggleLike(event, this)">
+                        <span class="heart-icon">🤍</span> <span class="like-count">175</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="brand-credit">pixiwishh by <a href="https://instagram.com/eshaalfatima___" target="_blank" rel="noopener noreferrer" style="color: #ff85a1;">@eshaalfatima___</a></p>
+        <p>&copy; 2026 PixiWishh. Crafted with love, stars, and sparkles ✨</p>
+        <p class="dev-credit">Made by Ahmad 💻✨</p>
+    </footer>
+
+    <!-- Product Options Modal -->
+    <div class="cart-overlay" id="product-overlay"></div>
+    <div class="checkout-modal" id="product-modal">
+        <div class="checkout-header">
+            <h3>Select Options ✨</h3>
+            <button class="close-cart-btn" id="close-product-btn">✖</button>
+        </div>
+        <div class="checkout-body">
+            <div class="product-modal-preview">
+                <img id="product-modal-img" src="" alt="Product preview">
+                <div>
+                    <div class="product-modal-name" id="product-modal-name"></div>
+                    <span class="price" id="product-modal-price" style="margin-bottom: 0;"></span>
+                </div>
+            </div>
+            <div id="product-options-area"></div>
+            <button class="checkout-btn" id="product-add-btn">Add to Cart 🛍️</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="cart-overlay" id="checkout-overlay"></div>
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-header">
+            <h3>Checkout 🌸</h3>
+            <button class="close-cart-btn" id="close-checkout-btn">✖</button>
+        </div>
+        
+        <div class="checkout-body">
+            <div class="checkout-summary">
+                <h4>Order Summary</h4>
+                <div id="checkout-items-list"></div>
+                <div class="checkout-total-line">
+                    <span>Total Amount:</span>
+                    <strong id="checkout-total-price">0 PKR</strong>
+                </div>
+            </div>
+
+            <form id="checkout-form" action="https://formspree.io/f/mzeprjyl" method="POST">
+                <h4>Shipping Information</h4>
+                <div class="form-group">
+                    <label for="cust-name">Full Name *</label>
+                    <input type="text" id="cust-name" name="customer_name" required placeholder="e.g. Eshaal Fatima">
+                </div>
+                <div class="form-group">
+                    <label for="cust-phone">Phone / WhatsApp *</label>
+                    <input type="tel" id="cust-phone" name="customer_phone" required placeholder="03XXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label for="cust-address">Delivery Address *</label>
+                    <textarea id="cust-address" name="delivery_address" rows="3" required placeholder="House/Street no, Area, City"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cust-payment">Payment Method</label>
+                    <select id="cust-payment" name="payment_method">
+                        <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                        <option value="Bank Transfer / JazzCash">Bank Transfer / JazzCash</option>
+                    </select>
+                </div>
+                <button type="submit" class="checkout-btn" style="margin-top: 15px;">Place Order ✨</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shopping Cart & Social Interactivity JavaScript -->
+    <script>
+        let cart = [];
+
+        const openCartBtn = document.getElementById('open-cart-btn');
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartTotalPrice = document.getElementById('cart-total-price');
+        const cartCount = document.getElementById('cart-count');
+
+        function toggleCart(show) {
+            if (show) {
+                cartDrawer.classList.add('open');
+                cartOverlay.classList.add('open');
+            } else {
+                cartDrawer.classList.remove('open');
+                cartOverlay.classList.remove('open');
+            }
+        }
+
+        openCartBtn.addEventListener('click', () => toggleCart(true));
+        closeCartBtn.addEventListener('click', () => toggleCart(false));
+        cartOverlay.addEventListener('click', () => toggleCart(false));
+
+        const openMenuBtn = document.getElementById('open-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuDrawer = document.getElementById('menu-drawer');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function toggleMenu(show) {
+            menuDrawer.classList.toggle('open', show);
+            menuOverlay.classList.toggle('open', show);
+        }
+
+        openMenuBtn.addEventListener('click', () => toggleMenu(true));
+        closeMenuBtn.addEventListener('click', () => toggleMenu(false));
+        menuOverlay.addEventListener('click', () => toggleMenu(false));
+
+        menuDrawer.addEventListener('click', (e) => {
+            if (e.target.closest('a')) toggleMenu(false);
+        });
+
+        /* Product Options configuration */
+        const SIZE_OPTIONS = ['Small (5-6 in)', 'Medium (6-7.5 in)', 'Large (7.5-9 in)'];
+
+        const EARRING_DESIGNS = [
+            { name: 'Celestial Pearl Star Earrings', img: 'earrings.PNG' },
+            { name: 'Sweet Heart Dangle Earrings', img: 'earings 1.PNG' },
+            { name: 'Ruby Star Dangle Earrings', img: 'earings 2.PNG' },
+            { name: 'Coquette Pearl Bow Earrings', img: 'earings 3.PNG' },
+            { name: 'Pastel Pink Star Earrings', img: 'earings 4.PNG' },
+            { name: 'Dreamy Purple Star Earrings', img: 'earings 5.PNG' },
+            { name: 'Melody Music Note Earrings', img: 'earings new 1.jpeg' },
+            { name: 'Dainty Ribbon Bow Earrings', img: 'earings new 2.jpeg' },
+            { name: 'Edgy Spike Dangle Earrings', img: 'earings new 3.jpeg' }
+        ];
+
+        const PRODUCT_OPTIONS = {
+            /* Necklaces Options */
+            'Coquette Ribbon Bow Pendant Necklace': { sizes: true },
+            'Celestial Star Layered Pearl Necklace': { sizes: true },
+            'Sweet Pastel Heart Charm Necklace': { sizes: true },
+            /* Bracelets Options */
+            'The Powerpuff Girls Bracelet': { sizes: true },
+            'Cherry Pearl Charm Bracelet': { sizes: true },
+            'Custom Name Bracelet': { sizes: true, customName: true },
+            'Starry Spike Pearl Charm Bracelet': { sizes: true },
+            'Sanrio Dream Charm Bracelet': { sizes: true, styles: ['Dark & Dreamy Kuromi 💜', 'Pretty in Pink My Melody 🎀'] },
+            'Aesthetic Multi-Style Charm Bracelet': { sizes: true, styles: ['Pink Vibe Check 🎀', 'Punk-ish Phase 🖤', 'Oceanic Dream 🌊'] },
+            'Tom & Jerry Besties Bracelet Set': { sizes: true },
+            'Sunshine Opal Sun Charm Bracelet': { sizes: true },
+            'Cute Charm Link Bracelet': { sizes: true, styles: ['Filigree Heart 🖤', 'Pastel Star ⭐', 'Ribbon Bow 🎀'] },
+            'Stargirl & Starboy Couple Bracelet': { sizes: true, styles: ['Single Bracelet (350 PKR)', 'Matching Pair Set (600 PKR)'] },
+            'Sparkle Charm Bracelet': { sizes: true },
+            'Pastel Beaded Daisy Bracelet': { sizes: true },
+            'Peach Pearl Glass Bead Bracelet': { sizes: true },
+            'Stranger Things Charm Bracelet': { sizes: true },
+            'Neon Pop Beaded Bracelet': { sizes: true, styles: ['Magenta / Purple 💖', 'Turquoise / Mint 🌊'] },
+            'Vintage Coquette Pearl & Bow Bracelet': { sizes: true },
+            'Dainty Black Pearl Charm Bracelet': { sizes: true },
+            'Ocean Blue Star Glass Bracelet': { sizes: true },
+            'Y2K Aesthetic Charm Bracelet Stack': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Full 3-Piece Stack Set (800 PKR)'] },
+            'Yin & Yang Matching Besties Set': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Matching Pair Set (500 PKR)'] },
+            'Enchanted Fairycore Bracelet Stack Set': { sizes: true },
+            'Sanrio Charm Bracelet': { sizes: true, styles: ['Dark & Dreamy Kuromi 💜', 'Pretty in Pink My Melody 🎀'] },
+            'Cute Charm Dangle Earrings': { designs: ['Metal Hearts 🖤', 'Pink Stars ⭐', 'Bow Pearls 🎀', 'Gingham Classics 🌸'] },
+            'Celestial Pearl Star Earrings': { earringPicker: true },
+            'Sweet Heart Dangle Earrings': { earringPicker: true },
+            'Ruby Star Dangle Earrings': { earringPicker: true },
+            'Coquette Pearl Bow Earrings': { earringPicker: true },
+            'Pastel Pink Star Earrings': { earringPicker: true },
+            'Dreamy Purple Star Earrings': { earringPicker: true },
+            'Melody Music Note Earrings': { earringPicker: true },
+            'Dainty Ribbon Bow Earrings': { earringPicker: true },
+            'Edgy Spike Dangle Earrings': { earringPicker: true },
+            /* Phone Charms Options */
+            'Custom Name Phone Charm': { customName: true },
+            /* New Deal Options */
+            'Ocean Blue Hello Kitty Set': { styles: ['Full Set of 3 (1100 PKR)', 'Bracelet (650 PKR)', 'Phone Charm (300 PKR)', 'Pin (150 PKR)'] },
+            'My Melody Sweet Pink Set': { styles: ['Full Set of 3 (1100 PKR)', 'Bracelet (650 PKR)', 'Phone Charm (300 PKR)', 'Pin (150 PKR)'] },
+            'Vintage Coquette Pearl Trio Set': { styles: ['Full Set of 3 (1100 PKR)', 'Bracelet (650 PKR)', 'Phone Charm (300 PKR)', 'Pin (150 PKR)'] },
+            'Coquette Phone Charm & Pin Duo': { styles: ['Phone Charm (300 PKR)', 'Pin (150 PKR)'] }
+        };
+
+        const productModal = document.getElementById('product-modal');
+        const productOverlay = document.getElementById('product-overlay');
+        const closeProductBtn = document.getElementById('close-product-btn');
+        const productOptionsArea = document.getElementById('product-options-area');
+        const productModalImg = document.getElementById('product-modal-img');
+        const productModalName = document.getElementById('product-modal-name');
+        const productModalPrice = document.getElementById('product-modal-price');
+        const productAddBtn = document.getElementById('product-add-btn');
+
+        let currentProduct = null;
+
+        function toggleProductModal(show) {
+            productModal.classList.toggle('open', show);
+            productOverlay.classList.toggle('open', show);
+        }
+
+        function esc(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+        }
+
+        function chipSection(title, kind, options, selected) {
+            return `<div class="option-section"><h4>${title}</h4><div class="option-chips">` +
+                options.map(o => `<button type="button" class="option-chip${selected === o ? ' selected' : ''}" data-kind="${kind}" data-value="${esc(o)}">${esc(o)}</button>`).join('') +
+                `</div></div>`;
+        }
+
+        function renderProductOptions() {
+            const c = currentProduct.config;
+            let html = '';
+            if (c.styles) html += chipSection('Choose your item / set option 💖', 'style', c.styles, currentProduct.selectedStyle);
+            if (c.earringPicker) html += chipSection('Choose which one you want ✨', 'earring', EARRING_DESIGNS.map(d => d.name), currentProduct.selectedDesign);
+            if (c.designs) html += chipSection('Choose which one you want ✨', 'design', c.designs, currentProduct.selectedDesign);
+            if (c.sizes) html += chipSection('Choose your size 📏', 'size', SIZE_OPTIONS, currentProduct.selectedSize) + `<div class="option-section"><h4>Measurement Chart 📏</h4><img src="wrist-size-chart.jpg" alt="Measurement chart" class="size-chart-img"></div>`;
+            if (c.customName) html += `<div class="option-section"><h4>Custom Name ✍️</h4><div class="form-group" style="margin-bottom: 0;"><input type="text" id="custom-name-input" maxlength="14" placeholder="e.g. Eshaal" value="${esc(currentProduct.customName)}"></div></div>`;
+            productOptionsArea.innerHTML = html;
+        }
+
+        function openProductModal(product) {
+            currentProduct = {
+                name: product.name,
+                price: product.price,
+                basePrice: product.price,
+                img: product.img,
+                config: PRODUCT_OPTIONS[product.name],
+                selectedSize: null,
+                selectedStyle: null,
+                selectedDesign: PRODUCT_OPTIONS[product.name].earringPicker ? product.name : null,
+                customName: ''
+            };
+            productModalImg.src = product.img;
+            productModalImg.alt = product.name;
+            productModalName.textContent = product.name;
+            productModalPrice.textContent = product.price + ' PKR';
+            renderProductOptions();
+            toggleProductModal(true);
+        }
+
+        productOptionsArea.addEventListener('click', (e) => {
+            const chip = e.target.closest('.option-chip');
+            if (!chip || !currentProduct) return;
+            const kind = chip.getAttribute('data-kind');
+            const value = chip.getAttribute('data-value');
+            if (kind === 'size') currentProduct.selectedSize = value;
+            if (kind === 'style') {
+                currentProduct.selectedStyle = value;
+                const priceMatch = value.match(/(\d+)\s*PKR/);
+                if (priceMatch) {
+                    currentProduct.price = parseInt(priceMatch[1], 10);
+                }
+                productModalPrice.textContent = currentProduct.price + ' PKR';
+            }
+            if (kind === 'design') currentProduct.selectedDesign = value;
+            if (kind === 'earring') {
+                currentProduct.selectedDesign = value;
+                const d = EARRING_DESIGNS.find(x => x.name === value);
+                if (d) {
+                    productModalImg.src = d.img;
+                    productModalName.textContent = d.name;
+                }
+            }
+            renderProductOptions();
+        });
+
+        productOptionsArea.addEventListener('input', (e) => {
+            if (e.target.id === 'custom-name-input' && currentProduct) {
+                currentProduct.customName = e.target.value;
+            }
+        });
+
+        productAddBtn.addEventListener('click', () => {
+            if (!currentProduct) return;
+            const c = currentProduct.config;
+
+            if ((c.earringPicker || c.designs) && !currentProduct.selectedDesign) {
+                alert('Please choose which one you want! ✨'); return;
+            }
+            if (c.styles && !currentProduct.selectedStyle) {
+                alert('Please choose your style/item! 💖'); return;
+            }
+            if (c.sizes && !currentProduct.selectedSize) {
+                alert('Please choose a size first! 📏'); return;
+            }
+            if (c.customName) {
+                const val = (document.getElementById('custom-name-input')?.value || '').trim();
+                if (!val) { alert('Please enter the custom name! ✍️'); return; }
+                currentProduct.customName = val;
+            }
+
+            let title = currentProduct.name;
+            let img = currentProduct.img;
+
+            if (c.earringPicker) {
+                const d = EARRING_DESIGNS.find(x => x.name === currentProduct.selectedDesign);
+                if (d) { title = d.name; img = d.img; }
+            }
+            if (c.designs) title += ` — ${currentProduct.selectedDesign}`;
+            if (c.styles) title += ` (${currentProduct.selectedStyle})`;
+            if (c.sizes) title += ` • Size: ${currentProduct.selectedSize}`;
+            if (c.customName) title += ` • Name: "${currentProduct.customName}"`;
+
+            addToCart(title, currentProduct.price, img);
+            toggleProductModal(false);
+            toggleCart(true);
+        });
+
+        closeProductBtn.addEventListener('click', () => toggleProductModal(false));
+        productOverlay.addEventListener('click', () => toggleProductModal(false));
+
+        document.addEventListener('click', function (e) {
+            const button = e.target.closest('.add-to-cart-btn');
+            if (button) {
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'), 10);
+                const img = button.getAttribute('data-img');
+
+                if (name && !isNaN(price)) {
+                    if (PRODUCT_OPTIONS[name]) {
+                        openProductModal({ name, price, img });
+                    } else {
+                        addToCart(name, price, img);
+                        toggleCart(true);
+                    }
+                }
+                return;
+            }
+
+            const dealImg = e.target.closest('.deal-img');
+            if (dealImg) {
+                const card = dealImg.closest('.deals-card-large');
+                const cardBtn = card ? card.querySelector('.add-to-cart-btn') : null;
+                if (cardBtn) {
+                    const name = cardBtn.getAttribute('data-name');
+                    const price = parseInt(cardBtn.getAttribute('data-price'), 10);
+                    const img = cardBtn.getAttribute('data-img');
+                    if (name && PRODUCT_OPTIONS[name]) openProductModal({ name, price, img });
+                }
+                return;
+            }
+
+            const prodImg = e.target.closest('.product-img');
+            if (prodImg) {
+                const card = prodImg.closest('.card');
+                const cardBtn = card ? card.querySelector('.add-to-cart-btn') : null;
+                if (cardBtn) {
+                    const name = cardBtn.getAttribute('data-name');
+                    const price = parseInt(cardBtn.getAttribute('data-price'), 10);
+                    const img = cardBtn.getAttribute('data-img');
+                    if (name && PRODUCT_OPTIONS[name]) openProductModal({ name, price, img });
+                }
+            }
+        });
+
+        function addToCart(name, price, img) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, img, quantity: 1 });
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            
+            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItemsCount;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Your shopping bag is empty! 🌸</p>';
+                cartTotalPrice.textContent = '0 PKR';
+                return;
+            }
+
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                grandTotal += item.price * item.quantity;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+
+                const imageSrc = item.img ? item.img : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect width="100%" height="100%" fill="%23f7e1ee"/><text x="50%" y="50%" font-size="20" text-anchor="middle" dominant-baseline="central">✨</text></svg>';
+
+                itemDiv.innerHTML = `
+                    <img src="${imageSrc}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${item.price} PKR</div>
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item-btn" onclick="removeItem(${index})">🗑️</button>
+                `;
+
+                cartItemsContainer.appendChild(itemDiv);
+            });
+
+            cartTotalPrice.textContent = `${grandTotal} PKR`;
+        }
+
+        function updateQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        const checkoutDrawerBtn = document.querySelector('.cart-footer .checkout-btn');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const checkoutOverlay = document.getElementById('checkout-overlay');
+        const closeCheckoutBtn = document.getElementById('close-checkout-btn');
+        const checkoutItemsList = document.getElementById('checkout-items-list');
+        const checkoutTotalPrice = document.getElementById('checkout-total-price');
+        const checkoutForm = document.getElementById('checkout-form');
+
+        function toggleCheckout(show) {
+            if (show) {
+                if (cart.length === 0) {
+                    alert('Your bag is empty! Add items before checking out. 🌸');
+                    return;
+                }
+                populateCheckoutSummary();
+                toggleCart(false);
+                checkoutModal.classList.add('open');
+                checkoutOverlay.classList.add('open');
+            } else {
+                checkoutModal.classList.remove('open');
+                checkoutOverlay.classList.remove('open');
+            }
+        }
+
+        function populateCheckoutSummary() {
+            checkoutItemsList.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const line = document.createElement('div');
+                line.className = 'checkout-item-line';
+                line.innerHTML = `
+                    <span>${item.name} (x${item.quantity})</span>
+                    <span>${itemTotal} PKR</span>
+                `;
+                checkoutItemsList.appendChild(line);
+            });
+
+            const deliveryFee = 200;
+            const deliveryLine = document.createElement('div');
+            deliveryLine.className = 'checkout-item-line';
+            deliveryLine.innerHTML = `
+                <span>Delivery Fee</span>
+                <span>${deliveryFee} PKR</span>
+            `;
+            checkoutItemsList.appendChild(deliveryLine);
+
+            const grandTotal = subtotal + deliveryFee;
+            checkoutTotalPrice.textContent = `${grandTotal} PKR`;
+        }
+
+        if (checkoutDrawerBtn) {
+            checkoutDrawerBtn.addEventListener('click', () => toggleCheckout(true));
+        }
+        if (closeCheckoutBtn) {
+            closeCheckoutBtn.addEventListener('click', () => toggleCheckout(false));
+        }
+        if (checkoutOverlay) {
+            checkoutOverlay.addEventListener('click', () => toggleCheckout(false));
+        }
+
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (cart.length === 0) {
+                    alert('Your bag is empty! Add items before placing an order. 🌸');
+                    return;
+                }
+
+                let orderLines = [];
+                let subtotal = 0;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    orderLines.push(`${item.name} x${item.quantity} — ${itemTotal} PKR`);
+                });
+
+                const deliveryFee = 200;
+                orderLines.push(`Delivery Fee — ${deliveryFee} PKR`);
+                let grandTotal = subtotal + deliveryFee;
+
+                const addHidden = (name, value) => {
+                    let input = checkoutForm.querySelector(`input[name="${name}"]`);
+                    if (!input) {
+                        input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = name;
+                        checkoutForm.appendChild(input);
+                    }
+                    input.value = value;
+                };
+
+                addHidden('order_summary', orderLines.join('\n'));
+                addHidden('grand_total', grandTotal + ' PKR');
+
+                fetch(checkoutForm.action, {
+                    method: 'POST',
+                    body: new FormData(checkoutForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('✨ Thank you! Your order has been placed successfully! We will contact you soon. 🌸');
+                        cart = [];
+                        renderCart();
+                        toggleCheckout(false);
+                        checkoutForm.reset();
+                    } else {
+                        alert('Oops! There was an issue placing your order. Please try again or contact us on Instagram! 💖');
+                    }
+                }).catch(error => {
+                    alert('Oops! Network error. Please check your connection and try again! 💖');
+                });
+            });
+        }
+
+        /* Sparkle & Interactive Effects */
+        function triggerSparkle(event, element) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle-particle';
+            sparkle.innerHTML = ['✨', '💖', '⭐', '🌸', '🪄'][Math.floor(Math.random() * 5)];
+            const rect = element.getBoundingClientRect();
+            sparkle.style.left = (event.clientX - rect.left) + 'px';
+            sparkle.style.top = (event.clientY - rect.top) + 'px';
+            element.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 800);
+        }
+
+        function toggleLike(event, button) {
+            event.stopPropagation();
+            button.classList.toggle('liked');
+            const countSpan = button.querySelector('.like-count');
+            const heartIcon = button.querySelector('.heart-icon');
+            let currentLikes = parseInt(countSpan.textContent, 10);
+            if (button.classList.contains('liked')) {
+                currentLikes += 1;
+                heartIcon.textContent = '💖';
+            } else {
+                currentLikes -= 1;
+                heartIcon.textContent = '🤍';
+            }
+            countSpan.textContent = currentLikes;
+        }
+    </script>
+</body>
+</html>
