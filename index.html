@@ -1862,6 +1862,10 @@
                 font-size: 0.9rem;
             }
 
+            .header-icon-btn {
+                display: none;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -1934,6 +1938,14 @@
 
             .deals-content {
                 min-width: 100%;
+            }
+
+            .deals-image-container {
+                min-width: 100%;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
 
             .deals-content h3 {
@@ -3071,7 +3083,7 @@
         }
 
         body.dark-mode header {
-            background: var(--pure-white);
+            background: var(--bg-cream);
             border-color: var(--soft-pink);
         }
 
@@ -3122,12 +3134,31 @@
         body.dark-mode .header-icon-btn {
             background: var(--pure-white);
             border-color: var(--soft-pink);
+            color: var(--text-dark);
             box-shadow: 0 2px 8px rgba(255, 143, 163, 0.15);
         }
 
         body.dark-mode .header-icon-btn:hover {
             background: var(--soft-pink);
+            color: var(--pure-white);
             box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+        }
+
+        body.dark-mode .cart-link-btn {
+            background: var(--pure-white);
+            border-color: var(--soft-pink);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .cart-link-btn:hover {
+            background: var(--soft-pink);
+            color: var(--pure-white);
+        }
+
+        body.dark-mode .wishlist-count,
+        body.dark-mode .cart-badge {
+            background: var(--deep-pink);
+            color: white;
         }
 
         /* Search modal */
@@ -3249,6 +3280,11 @@
 
         body.dark-mode .hero p {
             color: #c8b5e8;
+        }
+
+        body.dark-mode .hero-tagline {
+            color: #ffb7c5;
+            text-shadow: 0 0 10px rgba(255, 183, 197, 0.5);
         }
 
         body.dark-mode .faq-answer p {
@@ -4066,19 +4102,6 @@
 
         /* Responsive for new elements */
         @media (max-width: 768px) {
-            .header-actions {
-                gap: 6px;
-            }
-
-            .header-icon-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .header-icon-btn .icon {
-                font-size: 1.1rem;
-            }
-
             .whatsapp-float {
                 width: 56px;
                 height: 56px;
@@ -4249,7 +4272,7 @@
     </header>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/923XXXXXXXXX" target="_blank" class="whatsapp-float" id="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/923222333146" target="_blank" class="whatsapp-float" id="whatsapp-float" aria-label="Chat on WhatsApp">
         <span class="whatsapp-icon">💬</span>
         <span class="whatsapp-tooltip">Chat with us</span>
         <span class="whatsapp-pulse"></span>
@@ -4374,7 +4397,7 @@
                     </div>
                     <h3>Cute Charm Dangle Earrings</h3>
                     <span class="price">300 PKR each</span>
-                    <p>Handmade dangle earrings featuring metal hearts, pink stars, bow pearls, and charming gingham backings.</p>
+                    <p>Handmade dangle earrings featuring metal hearts, pink stars, bow pearls, and charming gingham backings. 5 designs available!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="Cute Charm Dangle Earrings" data-price="300" data-img="best sellers 3.PNG">Add to Cart 🛍️</button>
             </div>
@@ -4532,7 +4555,7 @@
                     </div>
                     <h3>The Powerpuff Girls Bracelet</h3>
                     <span class="price">350 PKR</span>
-                    <p>Cute Blossom, Bubbles, and Buttercup themed beaded wristwear.</p>
+                    <p>Cute Blossom and Buttercup themed beaded wristwear. Choose your character!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="The Powerpuff Girls Bracelet" data-price="350" data-img="beaded bracelet.PNG">Add to Cart 🛍️</button>
             </div>
@@ -4740,7 +4763,7 @@
                     </div>
                     <h3>Dainty Black Pearl Charm Bracelet</h3>
                     <span class="price">250 PKR</span>
-                    <p>Minimalist & chic dark bead strand finished with delicate pearl star accents.</p>
+                    <p>Minimalist & chic dark bead strand finished with delicate pearl star accents. Available in Pink or Purple!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="Dainty Black Pearl Charm Bracelet" data-price="250" data-img="bracelet new 14.jpeg">Add to Cart 🛍️</button>
             </div>
@@ -4752,10 +4775,10 @@
                         <img src="bracelet new 15.jpeg" alt="Ocean Blue Star Glass Bracelet" class="product-img">
                     </div>
                     <h3>Ocean Blue Star Glass Bracelet</h3>
-                    <span class="price">350 PKR</span>
-                    <p>Translucent ocean-blue beads and pearls topped off with star and heart metal charms.</p>
+                    <span class="price">250 PKR</span>
+                    <p>Translucent ocean-blue beads and pearls topped off with star and heart metal charms. Available in Pink or Purple!</p>
                 </div>
-                <button class="add-to-cart-btn" data-name="Ocean Blue Star Glass Bracelet" data-price="350" data-img="bracelet new 15.jpeg">Add to Cart 🛍️</button>
+                <button class="add-to-cart-btn" data-name="Ocean Blue Star Glass Bracelet" data-price="250" data-img="bracelet new 15.jpeg">Add to Cart 🛍️</button>
             </div>
 
             <!-- New Item 16 -->
@@ -4766,7 +4789,7 @@
                     </div>
                     <h3>Y2K Aesthetic Charm Bracelet Stack</h3>
                     <span class="price">300 PKR each / 800 PKR Set</span>
-                    <p>Playful multi-style stack with hearts, butterflies, and pearls. Buy individually or as a complete 3-set!</p>
+                    <p>Playful multi-style stack with hearts, butterflies, and pearls. Buy individually or as a complete 3-set! Available in Pink, Purple, Blue, Black & White!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="Y2K Aesthetic Charm Bracelet Stack" data-price="300" data-img="bracelet new 16.jpeg">Add to Cart 🛍️</button>
             </div>
@@ -4779,7 +4802,7 @@
                     </div>
                     <h3>Yin & Yang Matching Besties Set</h3>
                     <span class="price">300 PKR each / 500 PKR Set</span>
-                    <p>Contrast black & white charm bracelets made for besties or couples. Available single or as a 2-piece set!</p>
+                    <p>Contrast black & white charm bracelets made for besties or couples. Available single or as a 2-piece set! Choose from Pink, Purple, Blue, Black & White!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="Yin & Yang Matching Besties Set" data-price="300" data-img="bracelet new 17.jpeg">Add to Cart 🛍️</button>
             </div>
@@ -4836,7 +4859,7 @@
                     </div>
                     <h3>Coquette & Galaxy Charm Collection</h3>
                     <span class="price">450 PKR</span>
-                    <p>Dainty ribbon bows, key-to-the-galaxy charms, hearts, and pastel beaded aesthetic straps.</p>
+                    <p>Dainty ribbon bows, key-to-the-galaxy charms, hearts, and pastel beaded aesthetic straps. 5 options available!</p>
                 </div>
                 <button class="add-to-cart-btn" data-name="Coquette & Galaxy Charm Collection" data-price="450" data-img="phone charm 3.PNG">Add to Cart 🛍️</button>
             </div>
@@ -5326,7 +5349,7 @@
                         <a href="https://instagram.com/eshaalfatima___" target="_blank" rel="noopener noreferrer" aria-label="Follow PixiWishh on Instagram" title="Follow us on Instagram">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="https://wa.me/923244717364" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
+                        <a href="https://wa.me/923222333146" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         </a>
                     </div>
@@ -5334,9 +5357,8 @@
 
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-                    <a href="tel:+923244717364">📞 +92 324 471 7364</a>
-                    <a href="mailto:ahmadkamran0978@gmail.com">📧 ahmadkamran0978@gmail.com</a>
-                    <span>📍 Pakistan — nationwide delivery</span>
+                    <a href="tel:+923222333146">📞 +92 322 2333146</a>
+                    <span style="color: #ffffff;">Discover cute, trendy, and funky handmade jewelry, phone charms, and accessories crafted to add sparkle to your everyday look.</span>
                 </div>
 
                 <div class="footer-col">
@@ -5350,7 +5372,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="dev-credit">Developed by Ahmad · <a href="tel:+923244717364">0324 471 7364</a> · <a href="mailto:ahmadkamran0978@gmail.com">ahmadkamran0978@gmail.com</a></p>
+                <p class="dev-credit">Developed by Ahmad · <a href="tel:+923222333146">0322 2333146</a> · <a href="mailto:ahmadkamran0978@gmail.com">ahmadkamran0978@gmail.com</a></p>
                 <p>&copy; 2026 PixiWishh. All rights reserved.</p>
             </div>
         </div>
@@ -5538,11 +5560,11 @@
                 { name: "Coquette Ribbon Bow Pendant Necklace", price: "1200", currency: "PKR", image: "necklace new 1.jpeg", category: "Necklaces" },
                 { name: "Celestial Star Layered Pearl Necklace", price: "1350", currency: "PKR", image: "necklace new 2.jpeg", category: "Necklaces" },
                 { name: "Sweet Pastel Heart Charm Necklace", price: "1100", currency: "PKR", image: "necklace new 3.jpeg", category: "Necklaces" },
-                { name: "The Powerpuff Girls Bracelet", price: "650", currency: "PKR", image: "beaded bracelet.PNG", category: "Bracelets" },
+                { name: "The Powerpuff Girls Bracelet", price: "350", currency: "PKR", image: "beaded bracelet.PNG", category: "Bracelets" },
                 { name: "Cherry Pearl Charm Bracelet", price: "700", currency: "PKR", image: "charms bracelet.PNG", category: "Bracelets" },
                 { name: "Custom Name Bracelet", price: "800", currency: "PKR", image: "custom bracelet.PNG", category: "Bracelets" },
                 { name: "Strawberry Dreams Phone Charm", price: "450", currency: "PKR", image: "best sellers 1.PNG", category: "Phone Charms" },
-                { name: "Sanrio Charm Bracelets", price: "1200", currency: "PKR", image: "best sellers 2.PNG", category: "Bracelets" },
+                { name: "Sanrio Charm Bracelet", price: "550", currency: "PKR", image: "best sellers 2.PNG", category: "Bracelets" },
                 { name: "Cute Charm Dangle Earrings", price: "550", currency: "PKR", image: "best sellers 3.PNG", category: "Earrings" }
             ];
 
@@ -5553,7 +5575,7 @@
                 "description": "Handmade cute & sparkly jewelry. Custom name bracelets, phone charms, earrings, necklaces & more.",
                 "url": "https://pixiwishh.pk/",
                 "logo": "https://pixiwishh.pk/logo.jpeg",
-                "telephone": "+92-3XX-XXXXXXX",
+                "telephone": "+92-322-2333146",
                 "address": {
                     "@type": "PostalAddress",
                     "addressCountry": "PK"
@@ -5652,7 +5674,7 @@
             'Celestial Star Layered Pearl Necklace': { sizes: true },
             'Sweet Pastel Heart Charm Necklace': { sizes: true },
             /* Bracelets Options */
-            'The Powerpuff Girls Bracelet': { sizes: true },
+            'The Powerpuff Girls Bracelet': { sizes: true, styles: ['Buttercup 💚', 'Blossom ❤️'] },
             'Cherry Pearl Charm Bracelet': { sizes: true },
             'Custom Name Bracelet': { sizes: true, customName: true },
             'Starry Spike Pearl Charm Bracelet': { sizes: true },
@@ -5660,21 +5682,21 @@
             'Aesthetic Multi-Style Charm Bracelet': { sizes: true, styles: ['Pink Vibe Check 🎀', 'Punk-ish Phase 🖤', 'Oceanic Dream 🌊'] },
             'Tom & Jerry Besties Bracelet Set': { sizes: true },
             'Sunshine Opal Sun Charm Bracelet': { sizes: true },
-            'Cute Charm Link Bracelet': { sizes: true, styles: ['Filigree Heart 🖤', 'Pastel Star ⭐', 'Ribbon Bow 🎀'] },
-            'Stargirl & Starboy Couple Bracelet': { sizes: true, styles: ['Single Bracelet (350 PKR)', 'Matching Pair Set (600 PKR)'] },
+            'Cute Charm Link Bracelet': { sizes: true, styles: ['First 🌸', 'Second 🌸', 'Third ⭐', 'Fourth 💜', 'Fifth 💖', 'Sixth 🌟'] },
+            'Stargirl & Starboy Couple Bracelet': { sizes: true, styles: ['Starboy 🌟', 'Stargirl 🌙', 'Single Bracelet (350 PKR)', 'Matching Pair Set (600 PKR)'] },
             'Sparkle Charm Bracelet': { sizes: true },
-            'Pastel Beaded Daisy Bracelet': { sizes: true },
-            'Peach Pearl Glass Bead Bracelet': { sizes: true },
+            'Pastel Beaded Daisy Bracelet': { sizes: true, styles: ['First 🌸', 'Second 🌸', 'Third ⭐', 'Fourth 💜', 'Fifth 💖'] },
+            'Peach Pearl Glass Bead Bracelet': { sizes: true, styles: ['First 🌸', 'Second 🌸', 'Third ⭐', 'Fourth 💜', 'Fifth 💖'] },
             'Stranger Things Charm Bracelet': { sizes: true },
             'Neon Pop Beaded Bracelet': { sizes: true, styles: ['Magenta / Purple 💖', 'Turquoise / Mint 🌊'] },
             'Vintage Coquette Pearl & Bow Bracelet': { sizes: true },
-            'Dainty Black Pearl Charm Bracelet': { sizes: true },
-            'Ocean Blue Star Glass Bracelet': { sizes: true },
-            'Y2K Aesthetic Charm Bracelet Stack': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Full 3-Piece Stack Set (800 PKR)'] },
-            'Yin & Yang Matching Besties Set': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Matching Pair Set (500 PKR)'] },
+            'Dainty Black Pearl Charm Bracelet': { sizes: true, styles: ['Pink 🌸', 'Purple 💜'] },
+            'Ocean Blue Star Glass Bracelet': { sizes: true, styles: ['Pink 🌸', 'Purple 💜'] },
+            'Y2K Aesthetic Charm Bracelet Stack': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Full 3-Piece Stack Set (800 PKR)'], colors: ['Pink 🌸', 'Purple 💜', 'Blue 💙', 'Black 🖤', 'White 🤍'] },
+            'Yin & Yang Matching Besties Set': { sizes: true, styles: ['Single Bracelet (300 PKR)', 'Matching Pair Set (500 PKR)'], colors: ['Pink 🌸', 'Purple 💜', 'Blue 💙', 'Black 🖤', 'White 🤍'] },
             'Enchanted Fairycore Bracelet Stack Set': { sizes: true },
             'Sanrio Charm Bracelet': { sizes: true, styles: ['Dark & Dreamy Kuromi 💜', 'Pretty in Pink My Melody 🎀'] },
-            'Cute Charm Dangle Earrings': { designs: ['Metal Hearts 🖤', 'Pink Stars ⭐', 'Bow Pearls 🎀', 'Gingham Classics 🌸'] },
+            'Cute Charm Dangle Earrings': { designs: ['Black & Red Earrings 🖤❤️', 'Heart Earrings 💖', 'Bow Earrings 🎀', 'Pink Star Earrings 🌸', 'Purple Star Earrings 💜'] },
             'Celestial Pearl Star Earrings': { earringPicker: true },
             'Sweet Heart Dangle Earrings': { earringPicker: true },
             'Ruby Star Dangle Earrings': { earringPicker: true },
@@ -5685,6 +5707,7 @@
             'Dainty Ribbon Bow Earrings': { earringPicker: true },
             'Edgy Spike Dangle Earrings': { earringPicker: true },
             /* Phone Charms Options */
+            'Coquette & Galaxy Charm Collection': { styles: ['White 🤍', 'Black 🖤', 'Maroon 🌹', 'Pink Bow 🎀', 'Black Bow 🖤🎀'] },
             'Custom Name Phone Charm': { customName: true },
             /* New Deal Options */
             'Ocean Blue Hello Kitty Set': { styles: ['Full Set of 3 (1100 PKR)', 'Bracelet (650 PKR)', 'Phone Charm (300 PKR)', 'Pin (150 PKR)'] },
@@ -5716,7 +5739,7 @@
         }
 
         function esc(s) {
-            return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+            return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
         function chipSection(title, kind, options, selected) {
@@ -5729,6 +5752,7 @@
             const c = currentProduct.config;
             let html = '';
             if (c.styles) html += chipSection('Choose your item / set option 💖', 'style', c.styles, currentProduct.selectedStyle);
+            if (c.colors) html += chipSection('Choose your colour 🎨', 'color', c.colors, currentProduct.selectedColor);
             if (c.earringPicker) html += chipSection('Choose which one you want ✨', 'earring', EARRING_DESIGNS.map(d => d.name), currentProduct.selectedDesign);
             if (c.designs) html += chipSection('Choose which one you want ✨', 'design', c.designs, currentProduct.selectedDesign);
             if (c.sizes) html += chipSection('Choose your size 📏', 'size', SIZE_OPTIONS, currentProduct.selectedSize) + `<div class="option-section"><h4>Measurement Chart 📏</h4><img src="wrist-size-chart.jpg" alt="Measurement chart" class="size-chart-img"></div>`;
@@ -5745,6 +5769,7 @@
                 config: PRODUCT_OPTIONS[product.name],
                 selectedSize: null,
                 selectedStyle: null,
+                selectedColor: null,
                 selectedDesign: PRODUCT_OPTIONS[product.name].earringPicker ? product.name : null,
                 customName: ''
             };
@@ -5768,12 +5793,11 @@
             if (kind === 'style') {
                 currentProduct.selectedStyle = value;
                 const priceMatch = value.match(/(\d+)\s*PKR/);
-                if (priceMatch) {
-                    currentProduct.price = parseInt(priceMatch[1], 10);
-                }
+                currentProduct.price = priceMatch ? parseInt(priceMatch[1], 10) : currentProduct.basePrice;
                 productModalPrice.textContent = currentProduct.price + ' PKR';
             }
             if (kind === 'design') currentProduct.selectedDesign = value;
+            if (kind === 'color') currentProduct.selectedColor = value;
             if (kind === 'earring') {
                 currentProduct.selectedDesign = value;
                 const d = EARRING_DESIGNS.find(x => x.name === value);
@@ -5801,6 +5825,9 @@
             if (c.styles && !currentProduct.selectedStyle) {
                 alert('Please choose your style/item! 💖'); return;
             }
+            if (c.colors && !currentProduct.selectedColor) {
+                alert('Please choose a colour! 🎨'); return;
+            }
             if (c.sizes && !currentProduct.selectedSize) {
                 alert('Please choose a size first! 📏'); return;
             }
@@ -5819,6 +5846,7 @@
             }
             if (c.designs) title += ` — ${currentProduct.selectedDesign}`;
             if (c.styles) title += ` (${currentProduct.selectedStyle})`;
+            if (c.colors) title += ` • Colour: ${currentProduct.selectedColor}`;
             if (c.sizes) title += ` • Size: ${currentProduct.selectedSize}`;
             if (c.customName) title += ` • Name: "${currentProduct.customName}"`;
 
@@ -6818,8 +6846,8 @@
             var langDropdown = document.createElement('div');
             langDropdown.className = 'lang-dropdown';
             langDropdown.innerHTML = `
-                <div class="lang-option" data-lang="en"><span>🇺🇸</span> English</div>
-                <div class="lang-option active" data-lang="ur"><span>🇵🇰</span> اردو</div>
+                <div class="lang-option active" data-lang="en"><span>🇺🇸</span> English</div>
+                <div class="lang-option" data-lang="ur"><span>🇵🇰</span> اردو</div>
             `;
             langBtn.style.position = 'relative';
             langBtn.appendChild(langDropdown);
@@ -6935,6 +6963,7 @@
                     var icon = cartBtn.querySelector('span:first-child');
                     if (icon) {
                         cartBtn.innerHTML = '🛍️ ' + t['cart'] + ' <span class="cart-badge" id="cart-count">' + cartCount.textContent + '</span>';
+                        cartCount = document.getElementById('cart-count');
                     }
                 }
             }
@@ -7229,7 +7258,7 @@
             function addProductRatings() {
                 var ratings = {
                     'Strawberry Dreams Phone Charm': 4.9,
-                    'Sanrio Charm Bracelets': 4.8,
+                    'Sanrio Charm Bracelet': 4.8,
                     'Cute Charm Dangle Earrings': 4.7,
                     'Coquette Ribbon Bow Pendant Necklace': 4.9,
                     'Custom Name Bracelet': 5.0,
