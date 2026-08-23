@@ -1,0 +1,5 @@
+.qoder/
+index.backup-*.html
+*-test.png
+Thumbs.db
+desktop.ini
